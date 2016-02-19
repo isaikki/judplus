@@ -1,0 +1,137 @@
+.rowInput{
+	margin-top:10px;
+}
+.rowInputFinal{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.contCadastro{
+	max-width:950px;
+}
+.bodyLogin{
+	background:#4682B4;
+}
+.bartitulo{
+	border:0;
+	color:white;
+	border-radius: 0px;
+}
+.navMenu{
+	float:right;
+	margin-right:100px;
+}
+.conteudo{
+	margin-top:30px;
+}
+.dvTelaPrincipal{
+	margin-top:60px;
+	text-align:center;
+}
+.hdPrincipal{
+	margin-bottom:50px;
+}
+.dvQuadro1, .dvQuadro0{
+	text-align:center;
+	padding-top:12px;
+	padding-bottom:12px;
+}
+.dvQuadro1{
+	border-right:1px solid #cdcdcd;
+}
+.value{
+	font-size:36px;
+	color:#cdcdcd;
+}
+.btnTlPrincipal{
+	display:block;
+	color:#4682B4;
+}
+.btnTlPrincipal:hover, .btnTlPrincipal:active{
+	text-decoration:none;
+	color:#4682B4;
+}
+.liMenu:hover{
+	background:#4682B4;
+}
+.infPrincipal {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 37px;
+    display: table;
+    font-size: 11px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #5b5b5f;
+    border: 2px solid #d8d9dd;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.infPrincipal > li {
+    display:table-cell;
+    vertical-align:middle;
+    width:25%;
+    padding:28px 10px 30px;
+}
+.infPrincipal > li + li {
+    border-left:2px solid #d8d9dd;
+}
+.infPrincipal a { text-decoration: none; }
+.infPrincipal .value {
+    display:block;
+    font-size:34px;
+    line-height:37px;
+    font-weight:normal;
+    margin:0 0 6px;
+}
+.infPrincipal .value {
+    color:#5b5b5f;
+}
+.infPrincipal .name {
+    display:block;
+    color:#5fa199;
+}
+.dvLogin{
+	width:400px;
+	margin:0 auto;
+	border:1px solid #cdcdcd;
+	border-radius:5px;
+	background:white;
+	padding:10px;
+}
+.conteudoLogin{
+	padding:50px;
+}
+.barraLateral{
+	background:#323232;
+}
+.barraCima{
+	margin-bottom:0px;
+}
+.botoes{
+	float:right;
+}
+.tdNormal{
+	text-align:left;
+}
+.titPaginas{
+	text-align:left;
+}
+.prcDiv{
+	width:100%;
+}
+.content{
+	margin-top:10px;
+}
+.tituloEmpresa{
+	width:100%;
+	text-align:center;
+	color:white;
+	font-size:16px;
+	font-size:16px;
+	margin-left:5px;
+	margin-right:5px;
+	margin-right:5px;
+}
+.dvSeparar{
+	margin-bottom:20px;
+}
