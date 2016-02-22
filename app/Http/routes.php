@@ -20,7 +20,8 @@
 		Route::get('/cliente/novo', 'ClienteController@novo');
 		Route::post('/cliente/novo', 'ClienteController@salvar');
 		
-		Route::get('/cliente/editar', 'ClienteController@editar');
+		Route::get('/cliente/editar/{id}', 'ClienteController@editar');
+		Route::post('/cliente/editar/{id}', 'ClienteController@editar');
 	});
 	
 	Route::group(['middleware' => ['web']], function () {

@@ -11,6 +11,7 @@
 		<!-- Styles -->
 		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 		<link href="/css/estilos.css" rel="stylesheet">
+		<link href="/css/bootstrap-datepicker.css" rel="stylesheet">
 		<link href="/css/simple-sidebar.css" rel="stylesheet">
 		{{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 		<style>
@@ -28,6 +29,8 @@
 		{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 		<script src="/js/scripts.js"></script>
 		<script src="/js/maskedinput.js"></script>
+		<script src="/js/bootstrap-datepicker.js"></script>
+		<script src="/js/cep.min.js"></script>
 	</head>
 	<body id="app-layout">
 		<nav class="navbar navbar-inverse visible-xs barraCima" data-spy="affix" data-offset-top="197">
