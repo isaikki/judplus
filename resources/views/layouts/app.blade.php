@@ -30,7 +30,6 @@
 		<script src="/js/scripts.js"></script>
 		<script src="/js/maskedinput.js"></script>
 		<script src="/js/bootstrap-datepicker.js"></script>
-		<script src="/js/cep.min.js"></script>
 	</head>
 	<body id="app-layout">
 		<nav class="navbar navbar-inverse visible-xs barraCima" data-spy="affix" data-offset-top="197">

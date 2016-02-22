@@ -97,10 +97,4 @@ $(document).ready(function(){
 			}
 		}
 	});
-	$('#cep').cep(function(endereco) {
-		$('#endereco').val(endereco.logradouro);
-		$('#bairro').val(endereco.bairro);
-		//$('#cidade').val(endereco.cidade);
-		//$('#uf').val(endereco.uf);
-	});
 });

@@ -49,12 +49,12 @@ J+
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<label>Outros documentos</label>
+						<h3>Outros documentos</h3>
 					</div>
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-body pnlEnderecos">
-						<label>Endereço</label>
+						<h3>Endereço</h3>
 						<div class="row rowInput">
 							<div class="col-sm-6">
 								<label for="endereco">Endereço</label>

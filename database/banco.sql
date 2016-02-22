@@ -52,6 +52,21 @@ CREATE TABLE `assistente` (
 
 insert  into `assistente`(`id_pessoa`,`id_empresa`) values (3,1);
 
+/*Table structure for table `cidade` */
+
+DROP TABLE IF EXISTS `cidade`;
+
+CREATE TABLE `cidade` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `id_uf` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_cidade_uf` (`id_uf`),
+  CONSTRAINT `fk_cidade_uf` FOREIGN KEY (`id_uf`) REFERENCES `uf` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `cidade` */
+
 /*Table structure for table `cliente` */
 
 DROP TABLE IF EXISTS `cliente`;
@@ -68,6 +83,22 @@ CREATE TABLE `cliente` (
 /*Data for the table `cliente` */
 
 insert  into `cliente`(`id_pessoa`,`id_empresa`) values (4,1),(5,1),(6,1),(9,1),(10,1);
+
+/*Table structure for table `documento` */
+
+DROP TABLE IF EXISTS `documento`;
+
+CREATE TABLE `documento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tipo` int(11) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `id_pessoa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_documento_tipo` (`id_tipo`),
+  CONSTRAINT `fk_documento_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_documento` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `documento` */
 
 /*Table structure for table `empresa` */
 
@@ -88,6 +119,28 @@ CREATE TABLE `empresa` (
 
 insert  into `empresa`(`id`,`nome`,`apelido`,`imagem`,`created_at`,`updated_at`,`deleted_at`) values (1,'Barbosa e Santos Advocacia','BS Advocacia','','2016-02-15 17:30:41','2016-02-15 17:30:44',NULL);
 
+/*Table structure for table `endereco` */
+
+DROP TABLE IF EXISTS `endereco`;
+
+CREATE TABLE `endereco` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `logradouro` varchar(255) DEFAULT NULL,
+  `numero` varchar(255) DEFAULT NULL,
+  `complemento` varchar(255) DEFAULT NULL,
+  `cep` int(11) DEFAULT NULL,
+  `bairro` varchar(255) DEFAULT NULL,
+  `id_cidade` int(11) DEFAULT NULL,
+  `id_pessoa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_endereco_cidade` (`id_cidade`),
+  KEY `fk_endereco_pessoa` (`id_pessoa`),
+  CONSTRAINT `fk_endereco_cidade` FOREIGN KEY (`id_cidade`) REFERENCES `cidade` (`id`),
+  CONSTRAINT `fk_endereco_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `endereco` */
+
 /*Table structure for table `migrations` */
 
 DROP TABLE IF EXISTS `migrations`;
@@ -100,6 +153,21 @@ CREATE TABLE `migrations` (
 /*Data for the table `migrations` */
 
 insert  into `migrations`(`migration`,`batch`) values ('2014_10_12_000000_create_users_table',1),('2014_10_12_100000_create_password_resets_table',1);
+
+/*Table structure for table `pais` */
+
+DROP TABLE IF EXISTS `pais`;
+
+CREATE TABLE `pais` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sigla` char(3) DEFAULT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+/*Data for the table `pais` */
+
+insert  into `pais`(`id`,`sigla`,`nome`) values (1,'BRA','Brasil');
 
 /*Table structure for table `password_resets` */
 
@@ -138,6 +206,41 @@ CREATE TABLE `pessoa` (
 
 insert  into `pessoa`(`id`,`nome`,`email`,`nascimento`,`sexo`,`cpf_cnpj`,`imagem`,`tipo`,`created_at`,`updated_at`,`deleted_at`) values (1,'Isaias Lima dos Santos','isaikki@gmail.com','1981-08-06 15:41:01','m','08507661769',NULL,NULL,'2016-02-11 15:41:45','2016-02-11 15:41:48',NULL),(2,'Barbara Danielly Barbosa dos Santos','babiely@gmail.com','1982-12-04 12:00:00','f','498790090898',NULL,NULL,'2016-02-15 17:33:02','2016-02-15 17:33:04',NULL),(3,'Marciara Barbosa Purificação dos Santos','marciaesf@ibest.com.br','1981-05-01 12:00:02','f','60965980986',NULL,NULL,'2016-02-15 17:34:15','2016-02-15 17:34:18',NULL),(4,'José Alcindo dos Santos','josealcindo@hotmail.com','1981-05-01 12:00:02','m','54065065465',NULL,NULL,'2016-02-16 09:40:50','2016-02-16 09:40:53',NULL),(5,'Maria Dalva da Silva','mdalva@gmail.com','1977-02-02 23:25:03','f','06986546540',NULL,NULL,'2016-02-16 12:31:52','2016-02-16 12:31:54',NULL),(6,'Ademar dos Santos','ademar@gmail.com','1977-02-02 23:25:03','m','35465498096',NULL,NULL,'2016-02-16 12:37:43','2016-02-16 12:37:46',NULL),(9,'Eldemar Quaresma','eldemar@gmail.com','1984-02-07 00:00:00','','40654098796',NULL,NULL,'2016-02-17 17:36:37','2016-02-17 17:36:37',NULL),(10,'Delorean Mozart','delorean@gmail.com','1993-06-15 00:00:00','','60984654965',NULL,NULL,'2016-02-17 17:39:03','2016-02-17 17:39:03',NULL);
 
+/*Table structure for table `processo` */
+
+DROP TABLE IF EXISTS `processo`;
+
+CREATE TABLE `processo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `numero` varchar(255) DEFAULT NULL,
+  `titulo` varchar(255) DEFAULT NULL,
+  `descricao` text,
+  `id_advogado` int(11) DEFAULT NULL,
+  `id_empresa` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_processo_empresa` (`id_empresa`),
+  KEY `fk_processo_advogado` (`id_advogado`),
+  CONSTRAINT `fk_processo_advogado` FOREIGN KEY (`id_advogado`) REFERENCES `advogado` (`id_pessoa`),
+  CONSTRAINT `fk_processo_empresa` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `processo` */
+
+/*Table structure for table `processo_cliente` */
+
+DROP TABLE IF EXISTS `processo_cliente`;
+
+CREATE TABLE `processo_cliente` (
+  `id_pessoa` int(11) DEFAULT NULL,
+  `id_processo` int(11) DEFAULT NULL,
+  KEY `fk_processo_processo` (`id_processo`),
+  KEY `fk_processo_cliente` (`id_pessoa`),
+  CONSTRAINT `fk_processo_cliente` FOREIGN KEY (`id_pessoa`) REFERENCES `cliente` (`id_pessoa`),
+  CONSTRAINT `fk_processo_processo` FOREIGN KEY (`id_processo`) REFERENCES `processo` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `processo_cliente` */
+
 /*Table structure for table `telefone` */
 
 DROP TABLE IF EXISTS `telefone`;
@@ -151,11 +254,23 @@ CREATE TABLE `telefone` (
   PRIMARY KEY (`id`),
   KEY `fk_telefone_pessoa` (`id_pessoa`),
   KEY `fk_telefone_tipo` (`id_tipo`),
-  CONSTRAINT `fk_telefone_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_telefone` (`id`),
-  CONSTRAINT `fk_telefone_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`)
+  CONSTRAINT `fk_telefone_pessoa` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`),
+  CONSTRAINT `fk_telefone_tipo` FOREIGN KEY (`id_tipo`) REFERENCES `tipo_telefone` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `telefone` */
+
+/*Table structure for table `tipo_documento` */
+
+DROP TABLE IF EXISTS `tipo_documento`;
+
+CREATE TABLE `tipo_documento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `tipo_documento` */
 
 /*Table structure for table `tipo_telefone` */
 
@@ -170,6 +285,22 @@ CREATE TABLE `tipo_telefone` (
 /*Data for the table `tipo_telefone` */
 
 insert  into `tipo_telefone`(`id`,`tipo`) values (1,'Residencial'),(2,'Celular'),(3,'Comercial');
+
+/*Table structure for table `uf` */
+
+DROP TABLE IF EXISTS `uf`;
+
+CREATE TABLE `uf` (
+  `id` int(11) NOT NULL,
+  `sigla` char(2) DEFAULT NULL,
+  `nome` varchar(255) DEFAULT NULL,
+  `id_pais` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_uf_pais` (`id_pais`),
+  CONSTRAINT `fk_uf_pais` FOREIGN KEY (`id_pais`) REFERENCES `pais` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `uf` */
 
 /*Table structure for table `users` */
 
