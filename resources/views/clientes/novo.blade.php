@@ -68,6 +68,23 @@ J+
 								<button type="button" class="btn btn-primary">+</button>
 							</div>
 						</div>
+						<div class="row rowInput">
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-info listasCadastro" id="0">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="row">
+												<div class="col-sm-4">112132606504</div>
+												<div class="col-sm-4">Identidade</div>
+											</div>
+										</div>
+										<div class="col-sm-1">
+											<button type="button" class="btn btn-default" id="0" class="btRetiraDocumento">-</button>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="panel panel-default">
@@ -94,6 +111,24 @@ J+
 							<div class="col-sm-1">
 								<button type="button" class="btn btn-primary">+</button>
 							</div>
+						</div>
+						<div class="row rowInput">
+							<ul class="list-group">
+								<li class="list-group-item list-group-item-info listasCadastro" id="0">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="row">
+												<div class="col-sm-2">21</div>
+												<div class="col-sm-4">7566-4544</div>
+												<div class="col-sm-4">Residencial</div>
+											</div>
+										</div>
+										<div class="col-sm-1">
+											<button type="button" class="btn btn-default" id="0" class="btRetiraTelefone">-</button>
+										</div>
+									</div>
+								</li>
+							</ul>
 						</div>
 					</div>
 				</div>
@@ -148,7 +183,7 @@ J+
 						</div>
 						<div class="row rowInput">
 							<ul class="list-group">
-								<li class="list-group-item listasCadastro">
+								<li class="list-group-item list-group-item-info listasCadastro" id="0">
 									<div class="row">
 										<div class="col-sm-11">
 											<div class="row">
@@ -159,7 +194,7 @@ J+
 											</div>
 										</div>
 										<div class="col-sm-1">
-											<button type="button" class="btn btn-default">-</button>
+											<button type="button" class="btn btn-default" id="0" class="btRetiraEndereco">-</button>
 										</div>
 									</div>
 								</li>
