@@ -32,7 +32,7 @@
 		<script src="/js/bootstrap-datepicker.js"></script>
 	</head>
 	<body id="app-layout">
-		<nav class="navbar navbar-inverse visible-xs barraCima" data-spy="affix" data-offset-top="197">
+		<nav class="navbar navbar-inverse visible-xs barraCima" data-offset-top="197">
 			<div class="container-fluid">
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -52,7 +52,7 @@
 				@endif
 			</div>
 		</nav>
-		<nav class="bartitulo navbar navbar-inverse visible-md visible-lg visible-sm barraCima" data-spy="affix" data-offset-top="197">
+		<nav class="bartitulo navbar navbar-inverse visible-md visible-lg visible-sm barraCima" data-offset-top="197">
 			<div class="container-fluid">
 				<div class="navbar-header">
 				<a class="navbar-brand" href="/">JudPlus</a>

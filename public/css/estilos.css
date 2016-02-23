@@ -118,6 +118,7 @@
 }
 .prcDiv{
 	width:100%;
+	height:100%;
 }
 .content{
 	margin-top:10px;
@@ -134,4 +135,8 @@
 }
 .dvSeparar{
 	margin-bottom:20px;
+}
+.listasCadastro{
+	border-left:0;
+	border-right:0;
 }

@@ -9,46 +9,44 @@ use Auth;
 use App\Empresa;
 use App\Pessoa;
 use App\Cliente;
+use App\TipoDocumento;
+use App\TipoTelefone;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class ClienteController extends Controller
 {
+	protected $attr = array();
+	
     public function __construct(){
         $this->middleware('auth');
+		
+		$this->attr = $this->carregaDadosIniciais();
     }
 	
-	public function carregaDadosIniciais(){
-		$usuario = Auth::user();
-		$empresa = Empresa::find($usuario->id_empresa);
-		$pessoa = Pessoa::find($usuario->id);
-		
-		$this->attr['empresa']=$empresa;
-		$this->attr['pessoa']=$pessoa;
-		
-		return $this->attr;
-	}
-	
 	public function lista(){
-		$attr = $this->carregaDadosIniciais();
-		
 		//Retornar clientes cadastrados da empresa (Ativos e inativos)
-		$clientes = DB::table('pessoa')->select(
-			'pessoa.id', 'pessoa.nome', 'pessoa.email', 'pessoa.nascimento', 'pessoa.sexo', 'pessoa.imagem', 'pessoa.created_at', 'pessoa.updated_at', 'pessoa.deleted_at'
-		)->join(
-			'cliente', 'cliente.id_pessoa', '=', 'pessoa.id'
-		)->where(
-			'cliente.id_empresa', '=', $attr['empresa']->id
-		)->orderBy('pessoa.nome')->get();
+		$clientes = DB::table('pessoa')->select('pessoa.id', 'pessoa.nome', 'pessoa.email', 'pessoa.nascimento', 'pessoa.sexo', 'pessoa.imagem', 'pessoa.created_at', 'pessoa.updated_at', 'pessoa.deleted_at')
+						->join('cliente', 'cliente.id_pessoa', '=', 'pessoa.id')
+						->where('cliente.id_empresa', '=', $this->attr['empresa']->id)
+						->orderBy('pessoa.nome')->get();
 		
-		$attr['clientes'] = $clientes;
+		$this->attr['clientes'] = $clientes;
 		
 		//return redirect()->route('cliente.lista', compact('attr'));
+		$attr = $this->attr;
 		return view('clientes.lista', compact('attr'));
 	}
 	
 	public function novo(){
-		$attr = $this->carregaDadosIniciais();
+		$attr = $this->attr;
+		
+		//Carregar os tipos de documentos
+		$tpDocumentos = TipoDocumento::all();
+		$tpTelefones = TipoTelefone::all();
+		
+		$attr['tipo_documento'] = $tpDocumentos;
+		$attr['tipo_telefone'] = $tpTelefones;
 		
 		return view('clientes.novo', compact('attr'));
 	}
@@ -65,7 +63,9 @@ class ClienteController extends Controller
 		
 		//Validação redundante de campos
 		
+		
 		//Validação redundante de cpf/cnpj
+		
 		
 		if(!$erro){
 			//Verificar se pessoa existe na empresa

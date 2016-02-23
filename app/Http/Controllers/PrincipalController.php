@@ -13,34 +13,25 @@ use App\Http\Controllers\Controller;
 
 class PrincipalController extends Controller
 {
-	private $attr = array();
+	protected $attr = array();
 	
 	public function __construct(){
         $this->middleware('auth');
+		
+		$this->attr = $this->carregaDadosIniciais();
     }
 	
-	public function carregaDadosIniciais(){
-		$usuario = Auth::user();
-		$empresa = Empresa::find($usuario->id_empresa);
-		$pessoa = Pessoa::find($usuario->id);
-		
-		$this->attr['empresa']=$empresa;
-		$this->attr['pessoa']=$pessoa;
-		
-		return $this->attr;
-	}
-	
 	public function home(){
-		$attr = $this->carregaDadosIniciais();
-		
-		$cliente = Cliente::where('id_empresa', $attr['empresa']->id)->first();
-		$clientes = Cliente::where('id_empresa', $attr['empresa']->id)->count();
+		//$cliente = Cliente::where('id_empresa', $this->attr['empresa']->id)->first();
+		$clientes = Cliente::where('id_empresa', $this->attr['empresa']->id)->count();
 		//$processos = 
 		//$compromissos = 
 		//$recados = 
 		
-		$attr['clientes'] = $clientes;
-		$attr['cliente'] = $cliente;
+		$this->attr['clientes'] = $clientes;
+		//$this->attr['cliente'] = $cliente;
+		
+		$attr = $this->attr;
 		
 		return view('home', compact('attr'));
 	}

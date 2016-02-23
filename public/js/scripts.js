@@ -1,6 +1,6 @@
 function redimensiona(){
-	altura=$(window).height();
-	largura=$(window).width();
+	altura=$(document).height();
+	largura=$(document).width();
 	telaLateral=altura-50;
 	
 	if(telaLateral>550){
@@ -59,6 +59,7 @@ $(document).ready(function(){
         language: "pt-BR"
 	});
 	$('#cep').mask('99999-999');
+	$('#ddd').mask('(99)');
 	
 	//Eventos
 	$(window).resize(function(){
